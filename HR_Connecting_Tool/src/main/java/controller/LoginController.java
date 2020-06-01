@@ -46,8 +46,6 @@ public class LoginController {
 	@PostMapping
 	public String checkLogin(Model model, @ModelAttribute("user") User user, Errors errors) {				// Überprüfung der Logindaten nach Bestätigung
 		
-		System.out.println(user.getName()+"     :      "+ user.getPassword());
-		
 		if(userRepo.validateUserLogin(user.getName(), user.getPassword())) {
 			user = userRepo.findUserByName(user.getName());
 			

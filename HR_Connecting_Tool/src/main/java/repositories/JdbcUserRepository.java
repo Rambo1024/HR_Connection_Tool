@@ -82,8 +82,6 @@ public class JdbcUserRepository implements UserRepository{
 			jdbcTemplate.update("insert into SolvedTasks (solvedId, employeeId, taskId, solvedWith) values (?, ?, ?, ?)", ++HighestSolvedTaskId, user.getEmployeeId(), user.getEmployeeTask().getTaskId(), solvedEmployee);
 			int randomTask = rnd.nextInt((new Integer(HighestTaskId)- 5001) + 1 ) + 5001 ;
 			
-			System.out.println(randomTask);
-			
 			return jdbcTemplate.queryForObject("Select taskId, taskText from Tasks where taskId=?", this::mapRowToTask, randomTask);
 			}
 		

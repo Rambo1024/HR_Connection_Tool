@@ -35,13 +35,8 @@ public class HomeController {
 	}
 	
 	@PostMapping("/solveTask")
-	public String solveTask(Model model, @ModelAttribute User user, Errors errors) {
-		Task task;
-		do {
-			task = userRepo.SolveTask(user);
-		}while (task == null);
-		
-		user.setEmployeeTask(task);
+	public String solveTask(Model model, @ModelAttribute User user, Errors errors) {		
+		user.setEmployeeTask(userRepo.SolveTask(user));
 		user.setTaskIsSolved(false);
 		user.setTaskSolvedWith("");
 		
