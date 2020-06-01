@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login HR Employee Connector </title>
+</head>
+<body>
+
+
+<form method="POST" th:object="${user}">
+
+	<br/>
+
+	<h2>Benutzername</h2>
+	<input type="text" th:field="*{name}"/>
+	
+	<br/>
+	
+	<h2>Passwort</h2>
+	<input type="text" th:field="*{password}"/>
+
+	<br/>
+	
+	<br/>
+	
+	<button>Login</button>
+
+</form>
+
+
+
+
+</body>
+</html>

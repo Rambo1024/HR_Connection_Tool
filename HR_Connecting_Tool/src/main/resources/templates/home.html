@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+
+<h1>Hallo <span th:text="${user.getName()}">name</span>  !!   </h1>
+
+<br/>
+<br/>
+
+<h3>Hier ist deine Aufgabe fuer heute :</h3>
+
+<br/>
+
+<h2><span th:text="${user.getEmployeeTask().getTaskText()}">taskText</span></h2>
+
+<br/>
+<br/>
+
+<form method="Post" th:action="@{/home/solveTask}" th:object="${user}">
+
+<h5>
+<input name="isSolved" type="checkbox" th:checked="*{taskIsSolved = true}"/>  
+ist erledigt mit der/die Mitarbeiter/in        
+<input name="solvedWith" th:field="*{taskSolvedWith}" />  
+</h5>
+
+<button type="submit">Aufgabe erledigen</button>
+
+</form>
+
+<br/>
+
+<h3> Erfuellte Aufgaben : </h3>
+
+<ul>
+    <li th:each="task : ${user.getSolvedTasks()}"><span th:text="${task.taskText}">taskText</span>   wurde erleigt mit      <span th:text="${task.solvedWith}">solvedWith</span></li>
+</ul>
+
+
+
+</body>
+</html>
