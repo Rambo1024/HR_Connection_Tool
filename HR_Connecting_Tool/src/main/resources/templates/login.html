@@ -3,12 +3,84 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login HR Employee Connector </title>
+<style>
+	#loginContainer{
+		position: absolute;
+		right: 45%;
+		top: 40%;
+	}
+	
+	#title{
+		position: absolute;
+		left: 10%;
+		top: 15%;
+		width: 80%;
+	
+	}
+	
+	#loginButton{
+		position: relative;
+		margin-left: 25px;
+		margin-top: 10px;
+		width: 100px;
+	}
+	
+	#abschlussLinie{
+		position: absolute;
+		top: 90%;
+		width: 70%;
+		left: 15%;
+		border-width: 2px;
+	}
+	
+	#errorField{
+		position: absolute;
+		top: 37%;
+		right: 37%; 
+	
+	}
+	
+	
+	hr{
+		height:5px;
+		border-width: 3px;
+	}
+	
+	h1{
+		position: relative;
+		margin-left: 200px;
+	}
+  
+
+
+ </style>
+
 </head>
 <body>
 
 
+<div id="title">
+<hr>
+<h1>Login in das HR Connection Portal</h1>
+<hr>
+</div>
+
 <form method="POST" th:object="${user}">
 
+	<br/>
+	
+<div id="errorField"  th:if="${user.getLoginError()}">
+		<span class="validationError" style="color:red">
+		Es bestehen Probleme mit den Einlogdaten.
+		<br/>
+		Das Passwort oder der Benutzer sind nicht korrekt.
+		</span>
+	</div>
+
+<div id="loginContainer">
+
+	
+	
 	<br/>
 
 	<h2>Benutzername</h2>
@@ -17,16 +89,19 @@
 	<br/>
 	
 	<h2>Passwort</h2>
-	<input type="text" th:field="*{password}"/>
+	<input type="password" th:field="*{password}"/>
 
 	<br/>
 	
 	<br/>
 	
-	<button>Login</button>
-
+	<button id="loginButton">Login</button>
+	
+</div>
 </form>
-
+	
+	
+<hr id="abschlussLinie">
 
 
 

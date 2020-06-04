@@ -11,17 +11,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 @ComponentScan(basePackages = {"controller, repositories"})
 @RequestMapping("/")
-public class HrConnectingToolApplication implements WebMvcConfigurer {
+public class HrConnectingToolApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HrConnectingToolApplication.class, args);
 	}
 	
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		//registry.addViewController("/login").setViewName("login");
-	}
 	
+	// Weiterleitung einer Root Anfrage an den LoginController
 	
 	@GetMapping
 	public String loginStartpage() {

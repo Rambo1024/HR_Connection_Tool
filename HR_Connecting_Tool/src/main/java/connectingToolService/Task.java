@@ -1,10 +1,13 @@
 package connectingToolService;
 
-import java.util.LinkedList;
 
 public class Task {
 	
-	private String taskId, taskText, solvedWith;
+	
+	// Klasser zur Datenverwaltung für die Aufgaben
+	
+	
+	private String taskId, taskText, solvedWith;		// eindeutige Identifikationsnummer für die Aufgabe, der Aufgabentext, und mit wem eine Aufgabe erfüllt wurde
 	
 	public Task(String taskId) {
 		this.taskId = taskId;
@@ -20,6 +23,21 @@ public class Task {
 		this.solvedWith = solvedWith;
 	}
 	
+
+	//  Setter-Methoden zum anpassen der Variablen
+	
+	
+	public void setTaskText(String taskText) {
+		this.taskText = taskText;
+	}
+	
+	public void setSolvedWith(String solvedWith) {
+		this.solvedWith = solvedWith;
+	}
+	
+	
+	// Getter-Methoden zu abfragen der Variablen
+	
 	public String getTaskId(){
 		return taskId;
 	}
@@ -30,14 +48,6 @@ public class Task {
 	
 	public String getSolvedWith() {
 		return solvedWith;
-	}
-
-	public void setTaskText(String taskText) {
-		this.taskText = taskText;
-	}
-	
-	public void setSolvedWith(String solvedWith) {
-		this.solvedWith = solvedWith;
 	}
 	
 	

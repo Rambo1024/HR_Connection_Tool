@@ -5,16 +5,16 @@ import java.util.LinkedList;
 public class User {
 
 	
+	// Klase zur Datenverwaltung des Benutzers 
 	
-	private String name, password, employee_id;
 	
-	private Task employeeTask;
+	private String name, password, employee_id, taskSolvedWith;			// Benutzerdaten : Name, Passwort, employee_Id (Mitarbeiternummer) ..../....   TaskSolvedWith Übrtragungsvariable um den Mitarbeiter festzuhalten mit dem die Aufgabe erledigt wurde 
 	
-	private boolean taskIsSolved;
+	private Task employeeTask;							// Zu erfüllende Aufgabe
 	
-	private String taskSolvedWith;
+	private LinkedList<Task> solvedTasks;				// Liste mit erfüllten Aufgaben
 	
-	private LinkedList<Task> solvedTasks;
+	private boolean loginError, taskError;				// Flags bei falscher Eingabe im Login oder beim erfüllen einer Aufgabe
 	
 	public User() {	
 		solvedTasks = new LinkedList<Task>();
@@ -27,6 +27,9 @@ public class User {
 		this.employee_id = employee_id;
 		this.employeeTask = employeeTask;
 	}
+	
+	
+	//      Setter-Methoden zum anpassen der Variablen
 	
 	
 	public void setName(String name) {
@@ -45,9 +48,17 @@ public class User {
 		this.taskSolvedWith = taskSolvedWith;
 	}
 	
-	public void setTaskIsSolved(boolean taskIsSolved) {
-		this.taskIsSolved = taskIsSolved;
+	
+	public void setLoginError(boolean loginError) {
+		this.loginError = loginError;
 	}
+	
+	public void setTaskError(boolean taskError) {
+		this.taskError = taskError;
+	}
+	
+	
+	// Getter-Methode   zum Abfragen der VAriablen
 
 	public String getName() {
 		return name;
@@ -69,13 +80,21 @@ public class User {
 		return taskSolvedWith;
 	}
 	
-	public boolean getTaskIsSolved() {
-		return taskIsSolved;
-	}
-
 	public LinkedList<Task> getSolvedTasks(){
 		return solvedTasks;
 	}
+	
+	public boolean getLoginError() {
+		return loginError;
+	}
+	
+	public boolean getTaskError() {
+		return taskError;
+	}
+	
+	
+	
+	// Methode zum hinzufügen einer erfüllten Aufgabe
 	
 	public void addSolvedTask(Task task) {
 		solvedTasks.add(task);

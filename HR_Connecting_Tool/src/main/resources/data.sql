@@ -3,8 +3,8 @@ delete from Tasks;
 delete from SolvedTasks;
 
 insert into Tasks(taskId, taskText) values ('5001', 'Gehe mit einem bisher unbekannten Mitarbeiter Kaffee trinken');
-insert into Tasks(taskId, taskText) values ('5002', 'Spiele mit neuen Mitarbeitern ein Brettspiel');
-insert into Tasks(taskId, taskText) values ('5003', 'Gehe mit jemanden in der Mittagspause spazierien');
+insert into Tasks(taskId, taskText) values ('5002', 'Spiele mit einem neuen Mitarbeitern ein Brettspiel');
+insert into Tasks(taskId, taskText) values ('5003', 'Gehe mit jemanden in der Mittagspause spazieren');
 insert into Tasks(taskId, taskText) values ('5004', 'Bringe zwei neue Mitarbeiter in bekanntschaft zueinander');
 
 

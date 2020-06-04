@@ -3,44 +3,105 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>HR Connection Tool for Onboarding</title>
+
+<style>
+
+	hr{
+		border-width: 2px;
+		height: 5px;
+	}
+	
+	#taskContainer{
+		position: relative;
+		margin-left: 180px;
+	}
+
+
+      #logout {
+        position: absolute;
+     	right: 10%;
+     	top: 8%;
+     	width: 100px;
+     	height:40px;
+     }
+
+
+ </style>
+
 </head>
 <body>
 
+<div id="titleBar">
+<hr>
+<br/>
 
 
-<h1>Hallo <span th:text="${user.getName()}">name</span>  !!   </h1>
+<h1 style="position: relative; margin-left: 230px;">Hallo <span th:text="${user.getName()}">name</span>  :   Mitarbeiternummer <span th:text="${user.getEmployeeId()}">id</span></h1>
+
+<br/>
+<hr>
+</div>
+
+<form method="Get" th:action="@{/}">
+<button id="logout" type="submit">  Logout  </button>
+</form>
+
+
+<br/>
 
 <br/>
 <br/>
 
-<h3>Hier ist deine Aufgabe fuer heute :</h3>
+<div id="taskContainer">
+<h3 style="position: relative; margin-left: 190px;"> <u> Hier ist deine Aufgabe fuer heute : </u> </h3>
 
 <br/>
 
 <h2><span th:text="${user.getEmployeeTask().getTaskText()}">taskText</span></h2>
 
 <br/>
+
+</div>
+
+<br/>
+<hr>
 <br/>
 
 <form method="Post" th:action="@{/home/solveTask}" th:object="${user}">
 
-<h5>
-<input name="isSolved" type="checkbox" th:checked="*{taskIsSolved = true}"/>  
-ist erledigt mit der/die Mitarbeiter/in        
-<input name="solvedWith" th:field="*{taskSolvedWith}" />  
+<div th:if="${user.getTaskError()}" style=" position: relative; margin-left: 210px; ">
+	<span class="validationError" style="color:red">
+	Dieser Mitarbeiter konnte nicht gefunden werden. Bitte versuche es erneut.
+	</span>
+</div>
+
+
+
+<h5 style="position: relative; margin-left: 200px;" > 
+Die Aufgabe wurde erledigt mit der/die Mitarbeiter/in        
+<input name="solvedWith" th:field="*{taskSolvedWith}" />           
+<button type="submit">Aufgabe erledigen</button>
 </h5>
 
-<button type="submit">Aufgabe erledigen</button>
+
+
+<br/>
+<hr>
 
 </form>
 
 <br/>
 
-<h3> Erfuellte Aufgaben : </h3>
+<h3 style="position: relative; margin-left: 30px;"> Erfuellte Aufgaben : </h3>
+
+<br/>
 
 <ul>
-    <li th:each="task : ${user.getSolvedTasks()}"><span th:text="${task.taskText}">taskText</span>   wurde erleigt mit      <span th:text="${task.solvedWith}">solvedWith</span></li>
+    <li th:each="task : ${user.getSolvedTasks()}"><span th:text="${task.taskText}">taskText</span>   wurde erledigt mit      <span th:text="${task.solvedWith}">solvedWith</span></li>
 </ul>
+
+<br/>
+<hr>
 
 
 
